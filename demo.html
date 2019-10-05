@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="dist/simplemde.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/view.css">
+    <script src="dist/simplemde.min.js"></script>
+    <script src="dist/simplemde_extend_kq.js"></script>
+    <style>
+        .title {
+            line-height: 50px;
+
+        }
+
+        .title input {
+            line-height: 50px;
+            background: #fff;
+            border: none;
+            width: 100%;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .editor {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="editor">
+    <div class="title">
+        <input type="text" name="title" value="" placeholder="请输入标题，例如空气工作室www.kongqikeji.com" id="">
+    </div>
+    <textarea id="MyID"></textarea>
+</div>
+
+
+<script>
+    var simplemde = new SimpleMDE({
+        element: document.getElementById("MyID"),
+        spellChecker: false,
+        autosave: {
+            enabled: true,
+            uniqueId: "MyUniqueID",
+            delay: 1000,
+        },
+        // autoDownloadFontAwesome:false,
+        toolbar: [
+
+            {
+                name: "undo",
+                action: SimpleMDE.undo,
+                className: "fa fa-undo no-disable",
+                title: "撤销"
+            },
+            {
+                name: "redo",
+                action: SimpleMDE.redo,
+                className: "fa fa-repeat no-disable",
+                title: "重做"
+            },
+            {
+                name: "h1",
+                action: SimpleMDE.toggleHeading1,
+                className: "fa-b fa-1",
+                title: "标题1"
+            },
+            {
+                name: "h2",
+                action: SimpleMDE.toggleHeading2,
+                className: "fa-b fa-2",
+                title: "标题2"
+            },
+            {
+                name: "h3",
+                action: SimpleMDE.toggleHeading3,
+                className: "fa-b fa-3",
+                title: "标题3"
+            },
+            {
+                name: "h4",
+                action: function customFunction(editor) {
+                    SimpleToggleHeading(editor, 4)
+                },
+                className: "fa-b fa-4",
+                title: "标题4",
+            },
+
+            {
+                name: "quote",
+                action: SimpleMDE.toggleBlockquote,
+                className: "fa fa-quote-left",
+                title: "块",
+                default: true
+            },
+            {
+                name: "bold",
+                action: SimpleMDE.toggleBold,
+                className: "fa fa-bold",
+                title: "加粗"
+            },
+            {
+                name: "italic",
+                action: SimpleMDE.toggleItalic,
+                className: "fa fa-italic",
+                title: "斜体"
+            }
+            ,
+            {
+                name: "strikethrough",
+                action: SimpleMDE.toggleStrikethrough,
+                className: "fa fa-strikethrough",
+                title: "删除线"
+            },
+
+            {
+                name: "code",
+                action: SimpleMDE.toggleCodeBlock,
+                className: "fa fa-code",
+                title: "代码"
+            }
+            ,
+
+            {
+                name: "align-left",
+                action: function (editor) {
+                    SimpleToggleHeading(editor, 'left');
+                },
+                className: "fa fa-align-left",
+                title: "左对齐"
+            }
+            ,
+
+            {
+                name: "align-left",
+                action: function (editor) {
+                    SimpleToggleHeading(editor, 'center');
+                },
+                className: "fa fa-align-justify",
+                title: "居中"
+            }
+            ,
+
+            {
+                name: "align-left",
+                action: function (editor) {
+                    SimpleToggleHeading(editor, 'right');
+                },
+                className: "fa fa-align-right",
+                title: "右对齐"
+            }
+            ,
+
+            {
+                name: "ordered-list",
+                action: SimpleMDE.toggleOrderedList,
+                className: "fa fa-list-ol",
+                title: "有序"
+            }
+            ,
+
+            {
+                name: "unordered-list",
+                action: SimpleMDE.toggleOrderedList,
+                className: "fa fa-list-ul",
+                title: "无序"
+            }
+            ,
+
+            {
+                name: "link",
+                action: SimpleMDE.drawLink,
+                className: "fa fa-link",
+                title: "链接"
+            }
+            ,
+
+            {
+                name: "table",
+                action: SimpleMDE.drawTable,
+                className: "fa fa-table",
+                title: "链接"
+            },
+            {
+                name: "horizontal-rule",
+                action: SimpleMDE.drawHorizontalRule,
+                className: "fa fa-minus",
+                title: "水平线"
+            },
+            {
+                name: "side-by-side",
+                action: function (editor) {
+                    SimpleMDE.toggleSideBySide(editor);
+                },
+                className: "fa fa-columns no-disable no-mobile",
+                title: "预览模式",
+                default: true
+            },
+            {
+                name: "fullscreen",
+                action: SimpleMDE.toggleFullScreen,
+                className: "fa fa-arrows-alt no-disable no-mobile",
+                title: "全屏",
+                default: true
+            },
+        ]
+    });
+    //默认看起预览
+    simplemde.toggleSideBySide();
+
+</script>
+
+</body>
+</html>
